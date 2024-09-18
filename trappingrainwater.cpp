@@ -1,4 +1,4 @@
-// leetcode -> 042
+// leetcode -> 42
 class Solution {
 public:
     int Area(vector<int>& height, int left[], int right[], int n) {
