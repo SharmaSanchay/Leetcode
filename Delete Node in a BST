@@ -1,0 +1,55 @@
+// leetcode -> 450 (Binary search tree)
+class Solution {
+public:
+
+    int minval(TreeNode *root) {
+        TreeNode *temp = root;
+        while (temp->left != nullptr) {
+            temp = temp->left;
+        }
+        return temp->val;
+    }
+
+    TreeNode* deletionBST(TreeNode *root, int val) {
+        if (root == nullptr) {
+            return root;
+        }
+        if (root->val == val) {
+            // delete with 0 child
+            if (root->left == nullptr && root->right == nullptr) {
+                delete root;
+                return nullptr;
+            }
+            // deletion with 1 child where left child exists
+            if (root->left != nullptr && root->right == nullptr) {
+                TreeNode *temp = root->left;
+                delete root;
+                return temp;
+            }
+            // deletion with 1 child where right child exists
+            if (root->left == nullptr && root->right != nullptr) {
+                TreeNode *temp = root->right;
+                delete root;
+                return temp;
+            }
+            // deletion with 2 children (left and right child exists)
+            if (root->left != nullptr && root->right != nullptr) {
+                int mini = minval(root->right);
+                root->val = mini;
+                root->right = deletionBST(root->right, mini);
+                return root;
+            }
+        } else if (root->val > val) {
+            // left part
+            root->left = deletionBST(root->left, val);
+        } else {
+            // right part
+            root->right = deletionBST(root->right, val);
+        }
+        return root;
+    }
+
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        return deletionBST(root, key);
+    }
+};
