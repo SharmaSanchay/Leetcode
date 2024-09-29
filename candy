@@ -1,4 +1,4 @@
-// leetcode->135
+// leetcode->135  greedy
 class Solution {
 public:
     int candy(vector<int>& rating) {
@@ -27,3 +27,7 @@ public:
         return total_candies;
     }
 };
+/*
+Time complexity ->O(3N)
+space complexity ->O(N)
+    */
