@@ -1,0 +1,37 @@
+// leetcode -> (1382) Binary search tree
+class Solution {
+public:
+    void inorder(TreeNode* root, vector<int>& ans) {
+        // this is used to put the value of bst in a vector
+        if (!root) {
+            return;
+        }
+        inorder(root->left, ans);
+        ans.push_back(root->val);
+        inorder(root->right, ans);
+    }
+    TreeNode* inordertoBst(int s, int e, vector<int> ans) {
+        // base case
+        if (s > e) {
+            return nullptr;
+        }
+        // we find the mid point and create the node of the tree in order to make it balanced
+        int mid = (s + e) / 2;
+        TreeNode* root = new TreeNode(ans[mid]);
+        // insertion of the node in the left side
+        root->left = inordertoBst(s, mid - 1, ans);
+        // insertion of the node in the rigth side
+        root->right = inordertoBst(mid + 1, e, ans);
+        return root;
+    }
+    TreeNode* balanceBST(TreeNode* root) {
+        vector<int> ans;
+        // first find the inorder traversal of the bst
+        inorder(root, ans);
+        return inordertoBst(0, ans.size() - 1, ans);
+    }
+};
+/*
+Time complexity -> O(N)
+Space complexity -> O(N)
+*/
