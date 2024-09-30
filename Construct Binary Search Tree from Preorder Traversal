@@ -1,0 +1,94 @@
+//   Leetcode -> (1008) Binary search tree
+// Appraoch 1:
+class Solution {
+public:
+   TreeNode *solve(vector<int>preorder,int mini,int maxi,int&s) {
+        // base case ( as we traversed all the element of the preorder)
+         if(s >= preorder.size()){
+        return nullptr;
+    }
+    // base case ( if the current element is not in the range)
+    if(preorder[s] < mini || preorder[s] > maxi){
+        return nullptr;
+    }
+    TreeNode* root = new TreeNode(preorder[s++]);
+    // creation of a node in the left side
+    root->left = solve(preorder,mini,root->val,s);
+    // creation of a node in the right side
+    root->right = solve(preorder,root->val,maxi,s);
+    return root;
+    }
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        int s=0;
+        return solve(preorder,INT_MIN,INT_MAX,s);
+    }
+};
+/*
+Time complexity -> O(N)
+Space Complexity -> O(N)
+*/
+
+//Approach 2: in this approach we make BST from the preorder (simple creation of Binary search tree)
+TreeNode* insertIntoBSt(TreeNode *root,int data){
+    // base case
+    if(root == nullptr){
+        root = new TreeNode(data);
+        return root;
+    }
+    if(data > root->data){
+        // right part insertion
+        root->right = insertIntoBSt(root->right,data);
+    }
+    else{
+        //left part insertion 
+        root->left = insertIntoBSt(root->left,data);
+    }
+    return root;
+}
+TreeNode *bstFromPreorder(vector<int> &preorder) {
+    int i=0;
+    TreeNode*root = nullptr;
+    while(i<preorder.size()){
+        root = insertIntoBSt(root,preorder[i]);
+        i++;
+    }
+    return root;
+}
+// Approach 3: 
+/*  There is a another appraoch which is creation of BST using inorder and preorder 
+But there is  only preorder is given so how to find the inorder?
+To find the inorder of the BST (sort the preorder) and we get the inorder (as we know the inorder is in the sorted manner)
+And now by using the inorder and preorder we can create the BST*/
+class Solution {
+public:
+    int findpos(vector<int>in,int element){
+        for(int i=0;i<in.size();i++){
+            if(in[i]==element){
+                return i;
+            }
+        }
+        return -1;
+    }
+    TreeNode *solve(vector<int>&in,vector<int>pre,int&index,int inorderStart,int inorderEnd,int n ){
+        if(index>=n || inorderStart > inorderEnd){
+            return nullptr;
+        }
+        int element = pre[index++];
+        TreeNode *root = new TreeNode(element);
+        int poistion =  findpos(in,element);
+        root->left = solve(in,pre,index,inorderStart,poistion-1,n);
+        root->right = solve(in,pre,index,poistion+1,inorderEnd,n);
+        return root;
+    }
+    TreeNode* bstFromPreorder(vector<int>& preorder,) {
+        vector<int>inorder(preorder.size(),0);
+        for(int i=0;i<preorder.size();i++){
+        inoder[i] = preorder[i];
+        }
+        sort(inorder.begin(),inorder.end());
+        int preorderindex = 0;
+        int n = preorder.size();
+       TreeNode *ans =  solve(inorder,preorder,preorderindex,0,n-1,n);
+       return ans;
+    }
+};
