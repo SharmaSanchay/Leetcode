@@ -1,0 +1,25 @@
+// leetcode -> (1497)
+class Solution {
+public:
+    bool canArrange(vector<int>& arr, int k) {
+        vector<int>mp(k,0);
+        for(int &num:arr){
+            int rem = (num%k + k)%k;   // handling  reminder of negative number 
+            mp[rem]++;
+        }
+        if(mp[0]%2!=0){
+            return false;
+        }
+        for(int rem=1;rem<=k/2;rem++){
+            int cnt = k - rem;
+            if(mp[cnt]!=mp[rem]){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+/*
+Time complexity -> O(N)
+Space complexity -> O(K)
+*/
