@@ -1,0 +1,37 @@
+// Leetcode -> (23)  Linked list and recursion
+class Solution {
+public:
+    ListNode *merging(ListNode *h1,ListNode *h2){
+        // if the head of first linked list is nullptr then return head of second linked list
+        if (!h1) 
+        return h2; 
+      // if the head of second linked list is nullptr then return head of first linked list
+    if (!h2) 
+        return h1; 
+    // now the by the help of the recursion we are mergeing 
+    if (h1->val < h2->val)  
+    { 
+        h1->next = merging(h1->next, h2); 
+        return h1; 
+    } 
+    else 
+    { 
+        h2->next = merging(h1, h2->next); 
+        return h2; 
+    } 
+    }
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        if(lists.size() == 0){return nullptr;}
+        int i=0;
+       // This loop  is used to iterate over head of linked lists (We take head of two linked list and merge them)
+       for(i=0;i<lists.size()-1;i++){
+        ListNode * updatedhead = merging(lists[i],lists[i+1]);
+        lists[i+1] = updatedhead;
+       }
+       return lists[i];
+    }
+};
+/* 
+Time complexity -> O(N*k^2)
+Space complexity -> O(N)
+*/
