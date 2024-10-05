@@ -1,0 +1,41 @@
+// Leetcode -> (33 -> Search in Rotated Sorted Array) Binary search
+/*
+In Rotated array either left or right part is sorted (confirm and you can observe that also)
+so based that which part is sorted and is there element is present that part we procced in that direction
+step1: To check which part is sorted we  compare start value and middle value if the middle value is greater than the start value then left part is sorted otherwise right part is sorted
+step2: after going to left part we have check check the element if the arr[s] <= target and target <= arr[mid] then -> (e= mid-1) otherwise (s=mid+1)
+step3:after going to right part we have check check the element if the arr[mid] <= target and target <= arr[e] then -> (s= mid+1) otherwise (e=mid-1)
+step4: if we came out from the loop then return -1
+*/
+class Solution {
+public:
+    int search(vector<int>& arr, int target) {
+       int s = 0,e=arr.size()-1;
+       while(s<=e){
+        int mid = (s+e)/2;
+        if(arr[mid] == target){   // if we get the element 
+            return mid;
+        }
+        if(arr[s]<=arr[mid]){  // checking if the left part is  sorted
+            if(arr[s]<= target && target <=arr[mid]){
+                e = mid -1;
+            }else{
+                s = mid + 1;
+            }
+        }
+        else{            // checking if the right part is  sorted
+            if(arr[mid]<= target && target <= arr[e]){
+                s = mid + 1; 
+            }
+            else{
+                e = mid -1;
+            }
+        }
+       }
+       return -1;
+    }
+};
+/* 
+Time complexity -> O(logN)
+Space complexity -> O(1)
+*/
