@@ -1,0 +1,43 @@
+// Leetcode -> 784. Letter Case Permutation  (Recursion and backtracking)
+class Solution {
+public:
+/*
+Basic apporach : first change the case of the characeter then restore case of the char and try out the 
+different combination you can make . As answer can be returned in any order.
+The string only contains the uppercase and lowercase and only digits 
+*/
+ void solve(string s ,vector<string>&ans,int idx){
+    if(idx==s.length()){
+        ans.push_back(s);
+    }
+    // if the curr idx is poiting to number then move to other idx
+     if(s[idx]>=48 && s[idx]<=57){
+        cout <<"we have passed from here.."<< s[idx] << idx << endl;
+        solve(s,ans,idx+1);
+    }
+    //  if the curr char is in lower case then convert it into the uppercase
+   else  if(islower(s[idx])){
+        s[idx] =  toupper(s[idx]);
+        solve(s,ans,idx+1);
+        s[idx] = tolower(s[idx]);  // restore the case of the character
+        solve(s,ans,idx+1);
+    }
+    // if the curr char is in upper case then convert it into the lowercase
+    else if(isupper(s[idx])){
+        s[idx] = tolower(s[idx]);
+        solve(s,ans,idx+1);
+        s[idx] = toupper(s[idx]);  // restore the case of the character
+        solve(s, ans, idx + 1);
+    }
+}
+    vector<string> letterCasePermutation(string s) {
+        vector<string>ans;
+        int idx=0;
+        solve(s,ans,idx);
+        return ans;
+    }
+};
+/*
+Time complexity - > O(2^N)
+Space complexity - > O(2^N)
+*/
