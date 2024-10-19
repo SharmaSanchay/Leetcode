@@ -1,0 +1,25 @@
+// Leetcode -> 1545. Find Kth Bit in Nth Binary String  (Recursion)
+class Solution {
+public:
+// generate the binary string 
+    void solve(int n, int cnt, string &ans) {
+    // Base case
+    if (cnt == n) {
+        return;
+    }
+    cnt++;
+    string temp = ans;
+    for (char &c : temp) {
+        c = (c == '0') ? '1' : '0'; // Flip the bits
+    }
+    reverse(temp.begin(), temp.end());
+    ans += '1' + temp;
+    solve(n, cnt, ans);
+}
+    char findKthBit(int n, int k) {
+        string ans = "0";
+        solve(n,1,ans);
+        // string is 0 based indexes so we return k-1 index
+        return ans[k-1];
+    }
+};
