@@ -1,0 +1,46 @@
+// Leetcode -> 2583. Kth Largest Sum in a Binary Tree   (Binary tree)
+class Solution {
+public:
+    long long kthLargestLevelSum(TreeNode* root, int k) {
+        /* we use the queue for the level order traversal 
+        and priority queue to hold the sum of each level */
+        queue<TreeNode*>q;
+        q.push(root);
+        q.push(nullptr);   // we pushed  nullptr because to know that the one level is over
+        long long  sum  = 0;
+        priority_queue<long long> pq;
+        while(!q.empty()){
+            TreeNode *temp = q.front();
+            q.pop();
+            if(temp == nullptr){
+                // one level is over now
+                pq.push(sum);
+                sum=0;
+                if(!q.empty()){
+                    q.push(nullptr);
+                }
+            }
+            else{
+                sum = sum + temp->val;
+                if(temp->left!=nullptr){
+                    q.push(temp->left);
+                }
+                if(temp->right!=nullptr){
+                    q.push(temp->right);
+                }
+            }
+        }
+        long long ans  = pq.top();
+        // now we pop out the k element from the max heap
+        while(k!=0 && !pq.empty()){
+            ans = pq.top();
+            pq.pop();
+            k--;
+        }
+        return k!=0 ? -1 :ans;
+    }
+};
+/*
+Time complexity -> O(N∗Log(N))
+Space complexity -> O(N)
+*/
