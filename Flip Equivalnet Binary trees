@@ -1,0 +1,30 @@
+// Leetcode -> 951. Flip Equivalent Binary Trees   (Recursion && Binary Tree)
+class Solution {
+public:
+    bool flipEquiv(TreeNode* root1, TreeNode* root2) {
+        // if both the root becomes null then we true true (base case)
+        if (root1 == nullptr && root2 == nullptr) {
+            return true;
+        }
+        if (root1 == nullptr || root2 == nullptr) {
+            return false;
+        }
+        /*
+        first we go in left of the both tree and then we go right of the both tree
+        if at any point the value doesn't match we return false and backtrack to previous node
+        then root of first tree goes in left and root of second goes in right 
+        and root of first tree goes in right and root of second goes in left 
+        */
+        if (root1->val == root2->val) {
+            return flipEquiv(root1->left, root2->left) &&
+                       flipEquiv(root1->right, root2->right) ||
+                   flipEquiv(root1->left, root2->right) &&
+                       flipEquiv(root1->right, root2->left);
+        }
+        return false;
+    }
+};
+/*
+Time Complexity->O(N)
+Space Complexity->O(N)
+*/
