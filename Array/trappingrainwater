@@ -1,5 +1,5 @@
-// leetcode -> 42
-class Solution {
+// leetcode -> 42 (Array)
+class Solution { 
 public:
     int Area(vector<int>& height, int left[], int right[], int n) {
         int area = 0;
