@@ -1,0 +1,21 @@
+//Leetcode -> 1233 Remove sub folder from file System
+class Solution {
+public:
+    vector<string> removeSubfolders(vector<string>& folder) {
+        // sort the folder lexicographically to remove the folder
+        sort(folder.begin(),folder.end());
+        vector<string>ans;
+        for(string f:folder){
+            // if vector ans is empty then we push that folder or 
+            // if curr folder is the sub folder of the previous folder added to ans we check for that
+            if(ans.empty() || f.find(ans.back()+'/')!=0){
+                ans.push_back(f);
+            }
+        }
+        return ans;
+    }
+};
+/*
+Time Complexity -> O(N)
+Space complexity -> O(N)
+*/
