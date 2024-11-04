@@ -1,0 +1,27 @@
+//Leetcode -> Medium  3163 String Compression III 
+class Solution {
+public:
+    string compressedString(string word) {
+        // start with empty string 
+        string comp = "";
+        while(i<word.length()){
+            char CurrChar = word[i];
+            int CurrCnt = 0;
+            while(i<word.length() && CurrChar == word[i]){
+                CurrCnt++;
+                i++;
+                // if the Current Count of the Character reached to 9 then we have break inner loop beacuse the longest prefix is of 9 
+                if(CurrCnt == 9){
+                    break;
+                }
+            }
+            comp+=to_string(CurrCnt);
+            comp+=CurrChar;
+        }
+        return comp;
+    }
+};
+/*
+Time Complexity -> O(N)
+Space Complexity -> O(1)
+*/
