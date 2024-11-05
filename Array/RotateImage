@@ -1,0 +1,31 @@
+// Leetcode -> 48 (Rotate Image)  
+class Solution {
+public:
+    void transposeMatrix(vector<vector<int>>& matrix) {
+    int n = matrix.size();
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }
+}
+    void rotate(vector<vector<int>>& matrix) {
+        //first transpose the matrix 
+        transposeMatrix(matrix);
+        // after transposing the matrix then reverse each row 
+        for(int i=0;i<matrix.size();i++){
+             int start = 0;
+        int end = matrix.size()-1;
+            while(start<end){
+                swap(matrix[i][start],matrix[i][end]);
+                start++;
+                end--;
+            }
+        }
+
+    }
+};
+/*
+Time Complexity -> O(N^2)
+Space Complexity ->O(1)
+*/
