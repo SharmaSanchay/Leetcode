@@ -46,7 +46,7 @@ Each solution includes:
 
 2. **Navigate to the problem category:**
     ```bash
-    cd Medium/Graph
+    cd Graph
     ```
 
 3. **Run the solution:**
