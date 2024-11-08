@@ -4,9 +4,6 @@ Welcome to my LeetCode solutions repository! Here, you'll find well-explained so
 
 ![LeetCode](https://leetcode.com/static/images/LeetCode_Sharing.png)
 
-![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=SharmaSanchay.Leetcode)
-![GitHub Followers](https://img.shields.io/github/followers/SharmaSanchay?style=social)
-
 ## 📚 Table of Contents
 
 1. [Introduction](#introduction)
@@ -17,7 +14,7 @@ Welcome to my LeetCode solutions repository! Here, you'll find well-explained so
 
 ## 🌟 Introduction
 
-Hi there! I'm Sanchay Sharma, and this repository houses my journey through LeetCode problems. Whether you're a fellow coding enthusiast, preparing for technical interviews, or simply love solving algorithmic challenges, you're in the right place.
+Hi there! I'm [Your Name], and this repository houses my journey through LeetCode problems. Whether you're a fellow coding enthusiast, preparing for technical interviews, or simply love solving algorithmic challenges, you're in the right place.
 
 ## 📂 Solution Categories
 
@@ -43,7 +40,7 @@ Each solution includes:
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/SharmaSanchay/Leetcode
+    git clone https://github.com/yourusername/LeetCode-Solutions.git
     cd LeetCode-Solutions
     ```
 
@@ -59,23 +56,6 @@ Each solution includes:
         ./solution
         ```
 
-## 🏆 GitHub Trophies
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=SharmaSanchay)](https://github.com/ryo-ma/github-profile-trophy)
-
-## 📊 GitHub Stats
-
-![Sanchay Sharma's GitHub stats](https://github-readme-stats.vercel.app/api?username=SharmaSanchay&show_icons=true&theme=radical)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=SharmaSanchay&layout=compact&theme=radical)
-
-## 🚀 Top Skills
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=SharmaSanchay&layout=compact&theme=radical)](https://github.com/SharmaSanchay)
-
-## 🔥 GitHub Streak
-
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=SharmaSanchay&theme=radical&hide_border=true)
-
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to fork this repository, make improvements, and submit a pull request. Please ensure your solutions follow the existing format and include a thorough explanation.
@@ -84,6 +64,7 @@ Contributions are welcome! Feel free to fork this repository, make improvements,
 
 - **Email**: sanchaysharm18@gmail.com
 - **LinkedIn**: [Sanchay Sharma](www.linkedin.com/in/sanchay-sharma-699257231)
+- **LeetCode**: [Sanchay Leetcode]()
 
 ## 📝 License
 
