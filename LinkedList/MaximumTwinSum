@@ -1,0 +1,56 @@
+// Leetcode->2130 Maximum Twin Sum of a linked list (https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/description/)
+class Solution {
+public:
+    // Function to reverse the linked list
+    ListNode* ReverseLinkedList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return head; // Base case: if the list is empty or has one node, return the head
+        }
+        ListNode* temp = head;
+        ListNode* nexas = head;
+        ListNode* nextnode = temp->next;
+        temp->next = nullptr; // Initialize the reverse process by making the first node's next pointer null
+        while (nextnode != nullptr) {
+            ListNode* prev = nextnode->next;
+            nextnode->next = nexas;
+            nexas = nextnode;
+            if (prev != nullptr) {
+                nextnode = prev; // Move to the next node in the original list
+            } else {
+                return nextnode; // Return the new head of the reversed list
+            }
+        }
+        return nextnode;
+    }
+
+    // Function to find the maximum twin sum in the linked list
+    int pairSum(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head->next;
+        // Find the middle of the list using the slow and fast pointer approach
+        while (fast != nullptr && fast->next != nullptr) {
+            fast = fast->next;
+            if (fast != nullptr) {
+                slow = slow->next;
+                fast = fast->next;
+            }
+        }
+        // Reverse the second half of the list
+        ListNode *newlist = ReverseLinkedList(slow->next);
+        slow->next = nullptr; // Split the list into two halves
+        ListNode *temp1 = head;
+        ListNode *temp2 = newlist;
+        int MaxTwin = 0;
+        // Compare nodes from the first half and the reversed second half
+        while (temp1 != nullptr && temp2 != nullptr) {
+            MaxTwin = max(MaxTwin, temp1->val + temp2->val); // Calculate the maximum twin sum
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+        }
+        return MaxTwin; // Return the maximum twin sum
+    }
+};
+/*
+Time Complexity->O(N)
+Space Complexity->O(1)
+*/
