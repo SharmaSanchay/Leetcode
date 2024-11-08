@@ -40,7 +40,7 @@ Each solution includes:
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/LeetCode-Solutions.git
+    git clone https://github.com/SharmaSanchay/Leetcode.git
     cd LeetCode-Solutions
     ```
 
