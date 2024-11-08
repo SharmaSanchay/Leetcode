@@ -4,6 +4,9 @@ Welcome to my LeetCode solutions repository! Here, you'll find well-explained so
 
 ![LeetCode](https://leetcode.com/static/images/LeetCode_Sharing.png)
 
+![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=SharmaSanchay.Leetcode)
+![GitHub Followers](https://img.shields.io/github/followers/SharmaSanchay?style=social)
+
 ## 📚 Table of Contents
 
 1. [Introduction](#introduction)
@@ -56,6 +59,23 @@ Each solution includes:
         ./solution
         ```
 
+## 🏆 GitHub Trophies
+
+[![trophy](https://github-profile-trophy.vercel.app/?username=SharmaSanchay)](https://github.com/ryo-ma/github-profile-trophy)
+
+## 📊 GitHub Stats
+
+![Sanchay Sharma's GitHub stats](https://github-readme-stats.vercel.app/api?username=SharmaSanchay&show_icons=true&theme=radical)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=SharmaSanchay&layout=compact&theme=radical)
+
+## 🚀 Top Skills
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=SharmaSanchay&layout=compact&theme=radical)](https://github.com/SharmaSanchay)
+
+## 🔥 GitHub Streak
+
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=SharmaSanchay&theme=radical&hide_border=true)
+
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to fork this repository, make improvements, and submit a pull request. Please ensure your solutions follow the existing format and include a thorough explanation.
@@ -64,6 +84,7 @@ Contributions are welcome! Feel free to fork this repository, make improvements,
 
 - **Email**: sanchaysharm18@gmail.com
 - **LinkedIn**: [Sanchay Sharma](www.linkedin.com/in/sanchay-sharma-699257231)
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
