@@ -1,3 +1,4 @@
+// Leetcode -> 40 (https://leetcode.com/problems/combination-sum-ii/description/)
 class Solution {
 public:
 void solve(vector<int>can,vector<int>&ans,vector<vector<int>>&res,int target,int idx,int&tempsum){
@@ -33,3 +34,7 @@ void solve(vector<int>can,vector<int>&ans,vector<vector<int>>&res,int target,int
         return res;
     }
 };
+/*
+Time Complexity-> O(2^n)
+Space Complexity->O(n)
+*/
