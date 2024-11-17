@@ -1,0 +1,52 @@
+// Leetcode ->1106. Parsing A Boolean Expression  (stack)
+class Solution {
+public:
+    char solve(char op, vector<bool> ans) {
+        bool res = false;
+        if (op == '|') {
+            for (int i = 0; i < ans.size(); i++) {
+                res |= ans[i];
+            }
+        }
+        if (op == '&') {
+            res=true;   // by default in AND condition res set to the true or for else operator (false) works fine 
+            for (int i = 0; i < ans.size(); i++) {
+                res &= ans[i];
+            }
+        }
+        if(op == '!'){
+            res = !ans[0];
+        }
+        return (res == true ? 't' : 'f');
+    }
+    bool parseBoolExpr(string expression) {
+        stack<char> st;
+        int i=0;
+         for(char ch:expression){
+            if(ch== ',' || ch == '('){ // if we encounter , and (  then we skip  
+                continue ;
+            }
+            ;
+            if (ch == 't' || ch == 'f' || ch == '|' || ch == '&' || ch == '!') {   // if t , f , & , | ,! encounters then we push that onto the stack
+                st.push(ch);
+            }
+            else if (ch == ')') {   // if the  ) encounnters then we get a substr that we have evaluete 
+                vector<bool> ans;
+                while (st.top() != '|' && st.top() != '&' && st.top() != '!') {   // here is after completely reading the substr we encounter a operator when we encounter the operator we stop  the iteration 
+                    ans.push_back(st.top() == 't');
+                    st.pop();
+                }
+                // since we store the t and f in ans vector which is type of bool 
+                char op = st.top();
+                st.pop();
+                // now  we call a solve function op denotes the operator used evalute the substr and ans stores the substr
+                st.push(solve(op,ans));
+            }
+        }
+        return st.top()=='t';
+    }
+};
+/*
+Time compelxity -> O(N)
+Space compelxiy -> O(N)
+*/
