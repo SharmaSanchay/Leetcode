@@ -64,7 +64,7 @@ Contributions are welcome! Feel free to fork this repository, make improvements,
 
 - **Email**: sanchaysharm18@gmail.com
 - **LinkedIn**: [Sanchay Sharma](www.linkedin.com/in/sanchay-sharma-699257231)
-- **LeetCode**: [Sanchay Leetcode]()
+- **GeeksForGeeks**: [Sanchay GFG](https://www.geeksforgeeks.org/user/user_nv6tmstjd4e/)
 
 ## 📝 License
 
