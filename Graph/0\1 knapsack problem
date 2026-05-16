@@ -1,0 +1,63 @@
+Problem link -> https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1
+
+Approach 1:(Recursion + memoization)
+class Solution {
+  public:
+    int n;
+    int solve(vector<int>&val,vector<int>&wt,int idx,int cap,vector<vector<int>>&dp){
+        if(idx>=n || cap < 0){
+            return 0;
+        }
+        if(dp[idx][cap]!=-1){
+            return dp[idx][cap];
+        }
+        int take = 0;
+      // to avoid the negative capacity 
+        if(cap >= wt[idx]){
+            take = val[idx] + solve(val,wt,idx+1,cap - wt[idx],dp);
+        }
+        int skip = solve(val,wt,idx+1,cap,dp);
+        
+        return dp[idx][cap] =  max(take,skip);
+    }
+    int knapsack(int W, vector<int> &val, vector<int> &wt) {
+        n = wt.size();
+        vector<vector<int>>dp(n,vector<int>(W+1,-1));
+       return solve(val,wt,0,W,dp);
+      
+    }
+};
+
+Apporach 2: (Bottom -up) (Tabulation)
+class Solution {
+	public:
+	int knapsack(int W, vector<int> &val, vector<int> &wt) {
+		n = wt.size();
+		vector<vector<int>> dp(n, vector<int>(W + 1, 0));
+		
+		// when the capacity is the 0 then maximum profit i can achieve is the 0
+		// when the wt and val array have the only one element then the max profit is that element
+		// why to start from the wt[0] because if the capacity is less than the current weight 
+		//then we can not include that element
+		for (int i = wt[0]; i <= W ; i++) {
+			dp[0][i] = val[0];
+		}
+		
+		for (int idx = 1 ; idx < n ; idx++) {
+			for (int cap = 1 ; cap <= W; cap++) {
+				
+				int skip = dp[idx - 1][cap];
+				
+				int take = 0;
+				
+				if (cap >= wt[idx]) {
+					take = val[idx] + dp[idx - 1][cap - wt[idx]];
+				}
+				
+				dp[idx][cap] = max(take, skip);
+			}
+		}
+		return dp[n - 1][W];
+		
+	}
+};
