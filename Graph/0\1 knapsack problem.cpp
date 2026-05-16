@@ -1,6 +1,7 @@
-Problem link -> https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1
+// Problem link -> https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1 
 
-Approach 1:(Recursion + memoization)
+// Approach 1:(Recursion + memoization)
+
 class Solution {
   public:
     int n;
@@ -28,7 +29,8 @@ class Solution {
     }
 };
 
-Apporach 2: (Bottom -up) (Tabulation)
+//Apporach 2: (Bottom -up) (Tabulation)
+
 class Solution {
 	public:
 	int knapsack(int W, vector<int> &val, vector<int> &wt) {
